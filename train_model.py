@@ -77,7 +77,7 @@ for col in cat_features:
     # iterate through the unique values in one categorical feature
     for slicevalue in sorted(test[col].unique()):
         count = test[test[col] == slicevalue].shape[0]
-        p, r, fb = performance_on_categorical_slice(test, col, slicevalue, "salary", encoder, lb, model)
+        p, r, fb = performance_on_categorical_slice(test, col, slicevalue, cat_features, "salary", encoder, lb, model)
         with open("slice_output.txt", "a") as f:
             print(f"{col}: {slicevalue}, Count: {count:,}", file=f)
             print(f"Precision: {p:.4f} | Recall: {r:.4f} | F1: {fb:.4f}", file=f)
